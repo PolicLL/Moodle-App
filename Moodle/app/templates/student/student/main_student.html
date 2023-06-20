@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Student Subjects
+{% endblock %}
+
+{% block header %}
+    {% include 'student/student/student_header.html' %}
+{% endblock %}
+
+{% block content %}
+<h1>Student Subjects</h1>
+
+{% for sem_subjects in student_subjects %}
+  <h2>Semester: {{ forloop.counter }}</h2>
+  <table>
+    <tr>
+      <th>Subject Name</th>
+      <th>Status</th>
+      <th>Actions</th> <!-- Added column for actions -->
+    </tr>
+    {% for subject, status in sem_subjects %}
+    <tr>
+      <td>{{ subject.name }}</td>
+      <td>{{ status }}</td>
+      <td>
+      {% if status == 'NOT_SELECTED' %}
+        <form action="{% url 'enroll_student' subject.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Enroll</button>
+        </form>
+      {% elif status == 'ENROLLED' %}
+        <form action="{% url 'remove_enrollment' subject.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Remove</button>
+        </form>
+      {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Add Enrollment - Your Website
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'form-style-1.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Enrollment</button>
+    </form>
+{% endblock %}

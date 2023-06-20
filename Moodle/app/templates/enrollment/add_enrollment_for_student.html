@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Add Enrollment{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'adding.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'administrator/admin_header.html' %}
+
+    <h1>Add Enrollment</h1>
+
+    <h2>{{ student.username }}</h2>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        Subject: {{ form.subject }}
+        Status: {{ form.status }}
+        <input type="submit" value="Add">
+    </form>
+{% endblock %}

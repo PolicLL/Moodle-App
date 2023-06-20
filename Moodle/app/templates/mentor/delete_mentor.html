@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Delete Mentor
+{% endblock %}
+
+{% block content %}
+    <h1>Delete Mentor</h1>
+
+    <p>Are you sure you want to delete this mentor?</p>
+
+    <form method="post" action="{% url 'delete-mentor' mentor_id %}">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Subject List
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Subject Detail List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subject, passed_students_count in map.items%}
+            <tr>
+                <td>{{ subject }}</td>
+                <td>{{ passed_students_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

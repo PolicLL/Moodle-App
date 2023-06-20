@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    SUBJECT - Add
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'adding.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>SUBJECT - Add</h1>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <input type="submit" value="Add Subject">
+    </form>
+{% endblock %}

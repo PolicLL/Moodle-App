@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Main Page - ADMIN{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome, ADMIN!</h1>
+    <!-- Your content for the student main page -->
+{% endblock %}

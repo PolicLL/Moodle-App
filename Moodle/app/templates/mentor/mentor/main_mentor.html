@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Main Page - Mentor
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'mentor/mentor.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'mentor/mentor/mentor_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome, Mentor!</h1>
+    <h2>Your Subjects:</h2>
+    <form>
+        <table>
+            {% for subject in subjects %}
+                <tr>
+                    <td>{{ subject.name }}</td>
+                    <td>
+                        <form action="{% url 'enrolled-students' subject.id %}" method="GET" style="display: inline;">
+                            <button type="submit">Show Enrolled Students</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'all-students' subject.id %}" method="GET" style="display: inline;">
+                            <button type="submit">Show All Students</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+{% endblock %}
+
+
+

@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 10;
+}
+
+header {
+  background-color: #0056b3; /* Dark blue background color */
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Full width */
+}
+
+.menu {
+  list-style-type: none;
+  padding: 20px;
+  margin: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #fff; /* White text color */
+  font-size: 18px; /* Larger font size */
+  padding: 10px 20px; /* Increased padding */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+.menu li a:hover {
+  background-color: #002d5a; /* Darker blue hover background */
+  color: #fff; /* White text color */
+}

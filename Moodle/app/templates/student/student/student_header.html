@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Header Example
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'student/header_style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'student-main' %}">Main</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+{% endblock %}

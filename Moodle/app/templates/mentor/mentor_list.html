@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Mentor List
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Mentor List</h1>
+
+    <h2><a href="{% url 'add-mentor' %}">Add new mentor</a></h2>
+    <h2><a href="{% url 'add-mentor-subject' %}">Connect mentor and subject</a></h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mentor in mentors %}
+            <tr>
+                <td>{{ mentor.username }}</td>
+                <td>
+                    <a href="{% url 'edit-mentor' mentor.id %}">Edit</a>
+                    <form method="post" action="{% url 'delete-mentor' mentor.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this mentor?')">
+                    </form>
+                    <a href="{% url 'mentor-details' mentor.id %}">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

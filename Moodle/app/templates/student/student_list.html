@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Student List
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Student List</h1>
+
+    <h2><a href="{% url 'add-student' %}">Add new student</a></h2>
+    <h2><a href="{% url 'add-enrollment' %}">Add Enrollment for Student</a></h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th> <!-- Added column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.username }}</td>
+                <td>{{ student.status }}</td>
+                <td>
+                    <a href="{% url 'edit-student' student.id %}">Edit</a>
+                    <form method="post" action="{% url 'delete-student' student.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this student?')">
+                    </form>
+
+                    <a href="{% url 'student-details' student.id %}">Details</a> <!-- Added Details button -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

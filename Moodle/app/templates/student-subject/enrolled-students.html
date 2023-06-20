@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Enrolled Students - Mentor
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'form-style-1.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% if temp_user == 'ADMIN' %}
+        {% include 'administrator/admin_header.html' %}
+    {% elif temp_user == 'MENTOR' %}
+        {% include 'mentor/mentor/mentor_header.html' %}
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Enrolled Students - {{ subject.name }}</h1>
+    <form method="POST" action="{% url 'enrollment-update' %}">
+        {% csrf_token %}
+        <input type="hidden" name="subject_id" value="{{ subject.id }}">
+        <ul>
+            {% for enrollment in enrollments %}
+                <li>
+                    {{ enrollment.student.username }}:
+                    <select name="status_{{ enrollment.student.id }}">
+                        <option value="ENROLLED" {% if enrollment.status == 'ENROLLED' %}selected{% endif %}>Enrolled</option>
+                        <option value="PASSED" {% if enrollment.status == 'PASSED' %}selected{% endif %}>Passed</option>
+                        <option value="DROPPED" {% if enrollment.status == 'DROPPED' %}selected{% endif %}>Dropped</option>
+                    </select>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Save Changes</button>
+    </form>
+{% endblock %}

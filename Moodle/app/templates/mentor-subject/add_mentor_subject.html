@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Student List
+{% endblock %}
+
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'form-style-1.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="/mentors/add-subject">
+        {% csrf_token %}
+        <label for="mentor">Select a mentor:</label>
+        <select name="mentor_id" id="mentor">
+            {% for mentor in mentors %}
+                <option value="{{ mentor.id }}">{{ mentor.username }}</option>
+            {% endfor %}
+        </select>
+        <label for="subject">Select a subject:</label>
+        <select name="subject_id" id="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Add Subject</button>
+    </form>
+{% endblock %}

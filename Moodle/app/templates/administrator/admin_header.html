@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Header Example</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'administrator/header_style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'admin-main' %}">Main</a></li>
+                <li><a href="{% url 'subject-list' %}">Subjects</a></li>
+                <li><a href="{% url 'student-list' %}">Students</a></li>
+                <li><a href="{% url 'mentor-list' %}">Mentors</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Add Mentor
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'adding.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include 'administrator/admin_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Add Mentor</h1>
+
+    <form method="post" action="{% url 'add-mentor' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add Mentor">
+    </form>
+{% endblock %}

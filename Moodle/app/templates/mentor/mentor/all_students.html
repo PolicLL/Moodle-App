@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    All Students - Your Website
+{% endblock %}
+
+
+
+{% block header %}
+    {% include 'mentor/mentor/mentor_header.html' %}
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'form-style-1.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>All Students - {{ subject.name }}</h1>
+
+    {% if enrolled_students %}
+        <h2>Enrolled Students:</h2>
+        <ul>
+            {% for student, status in enrolled_students %}
+                <li>{{ student }} - {{ status }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No enrolled students found.</p>
+    {% endif %}
+
+    {% if passed_students %}
+        <h2>Passed Students:</h2>
+        <ul>
+            {% for student, status in passed_students %}
+                <li>{{ student }} - {{ status }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No passed students found.</p>
+    {% endif %}
+
+    {% if dropped_students %}
+        <h2>Dropped Students:</h2>
+        <ul>
+            {% for student, status in dropped_students %}
+                <li>{{ student }} - {{ status }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No dropped students found.</p>
+    {% endif %}
+{% endblock %}

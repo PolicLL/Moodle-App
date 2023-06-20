@@ -1,0 +1,82 @@
+/* subject.css */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f2f9ff; /* Light blue background color */
+  color: #333; /* Text color */
+}
+
+h1 {
+  color: #007bff; /* Dark blue heading color */
+  text-align: center;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #555;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: fixed; /* Added fixed table layout */
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc; /* Light gray border color */
+}
+
+th {
+  background-color: #e4f0fd; /* Light blue header background */
+  color: #333; /* Text color */
+}
+
+tr:nth-child(even) {
+  background-color: #f8fbff; /* Very light blue alternate row background */
+}
+
+tr:hover {
+  background-color: #def3ff; /* Hover background color */
+}
+
+a {
+  text-decoration: none;
+  color: #007bff; /* Dark blue link color */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: inline;
+}
+
+input[type="submit"] {
+  background-color: #007bff; /* Dark blue submit button background */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue hover background */
+}
+
+a.edit-link,
+a.edit-link:hover,
+a.edit-link:focus {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
